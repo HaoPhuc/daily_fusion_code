@@ -3,7 +3,8 @@ I practice coding in Python, MATLAB and Fortran for fusion analysis.
 
 ## How it works
 - A new exercise appears in `exercises/` every day just after midnight (Amsterdam time).
-- Each exercise folder has a `README.md` (the task), a `THEORY.md` (background on anything new) and a starter file. Write your solution in the starter file, then commit and push.
+- Each exercise folder has a PDF named after the folder, with the task and the theory in one easy-to-read file. It also has the same content as `README.md` (task) and `THEORY.md` (theory), plus a starter file.
+- Write your solution in the starter file, then commit and push.
 - The next run checks every solved exercise that has no feedback yet. It writes `FEEDBACK.md` in that folder and emails a short summary.
 - Late is fine. An exercise gets checked whenever you push it.
 - Want a re-check after fixing something? Delete that folder's `FEEDBACK.md` and push.

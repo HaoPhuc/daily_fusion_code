@@ -40,5 +40,4 @@ The exact solution never does either, so the step size is limited by stability a
 
 ## Practical tips
 - **Number of steps:** use `n = round(t_end / dt)`, not `int(...)`. Floating-point division can land just below a whole number: `int(0.3 / 0.1)` gives `2`, not `3`.
-- **Preallocate:** create `N = np.zeros(n + 1)` and fill it in the loop. It's the standard habit in numerical code, and Fortran and MATLAB will need it.
-- **Relative error:** $|N_\text{approx} - N_\text{exact}| \,/\, |N_\text{exact}|$.
+- **Preallocate:** create `N = np.zeros(n + 1)`, then fill it in the loop. Fortran and MATLAB work the same way.
