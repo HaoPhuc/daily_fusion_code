@@ -7,6 +7,8 @@ dN/dt = −λN,  λ = ln 2 / t½
 
 You'll solve this ODE with the explicit Euler method and measure how the error depends on the time step.
 
+New to Euler's method? Read [THEORY.md](THEORY.md) first.
+
 ## Tasks
 Fill in `solution.py`. Use only `numpy` and `math`, not `scipy`.
 
