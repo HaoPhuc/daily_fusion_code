@@ -163,6 +163,8 @@ p:has(> .katex-display:only-child), p:has(> span.display:only-child) { margin: 0
 .s-check-yourself, .s-submit { border-radius: 6pt; padding: 1pt 11pt 3pt; margin: 12pt 0 8pt; break-inside: avoid; }
 .s-check-yourself { background: var(--acc-bg); border-left: 3pt solid var(--acc); }
 .s-submit { background: #f4f5f7; }
+.s-recall { border: 1pt dashed var(--acc-soft); border-radius: 6pt; padding: 1pt 11pt 3pt; margin: 12pt 0 8pt; break-inside: avoid; }
+.s-recall h2 { margin-top: 8pt; }
 .s-check-yourself h2, .s-submit h2 { margin-top: 8pt; }
 .s-check-yourself h2::before, .s-submit h2::before { display: none; }
 

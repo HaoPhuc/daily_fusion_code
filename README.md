@@ -20,11 +20,15 @@ Exercises follow four tracks in a fixed order, so each topic builds on the last.
 | Thu | [DSA: data structures and algorithms](curriculum/DSA.md) | Python |
 | Fri | CTRL | Simulink |
 | Sat | FT, longer | Fortran |
-| Sun | NUM, longer, plus one topic from the week | Python |
+| Sun | NUM, longer (every second Sunday: a review exercise) | Python |
 
 - **Normal size:** weekdays take 20–40 min, weekends 60–90 min.
 - **Exam mode** (on until 8 Nov 2026): weekdays take 10–15 min and weekends 20–30 min, and Friday is a MATLAB script instead of Simulink.
 - **Mastery:** a topic counts as mastered once your solution gets **Correct**. **Partly correct** or **Not yet** brings the topic back as a short retry.
+- **Active recall:** older topics come back about 1 week, 1 month, 3 months and then 6 months after you master them.
+  - Most exercises end with a short **Recall** section (about 5 min, closed book) that you answer in `recall.md` without looking at your notes.
+  - Every second Sunday is a review exercise that mixes 2–3 older topics.
+  - A failed recall brings the topic back a week later.
 - **Progress:** `LOG.md` lists every exercise, its topic IDs and its status.
 - **Rules:** `AGENTS.md` has the rules the daily run follows. Edit it to change the schedule, exam mode or anything else.
 
