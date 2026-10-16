@@ -1,5 +1,5 @@
 # daily_fusion_code
-I practice coding in Python, MATLAB and Fortran for fusion analysis.
+Daily coding practice for fusion and plasma physics: numerical methods and algorithms in Python, MATLAB/Simulink and Fortran, with theory notes and feedback.
 
 ## How it works
 - A new exercise appears in `exercises/` every day just after midnight (Amsterdam time).
