@@ -167,10 +167,11 @@ One row per exercise: `| Date | Day | Track | Lang | Topics | Exercise | Status 
 LOG.md is the record of progress and the source for recall due dates. Keep old rows; only change their status and recall marks.
 
 ## 11. Commit and push
-1. Stage the files this run created or changed, then `git fetch origin main` and `git rebase origin/main`.
-2. Make one commit, using the author identity from the task prompt, with a message like `Feedback: <exercises>; new: <date> <lang> <title>`.
-3. Push with `git push origin HEAD:main`.
-4. Confirm with `git fetch origin main && git status -sb`.
+1. Update the progress views by running `python3 tools/progress.py`. It rewrites `progress.svg` (the panel at the top of README.md) and the status marks in `curriculum/*.md` from LOG.md. Never edit those marks by hand.
+2. Stage the files this run created or changed (including `progress.svg` and `curriculum/`), then `git fetch origin main` and `git rebase origin/main`.
+3. Make one commit, using the author identity from the task prompt, with a message like `Feedback: <exercises>; new: <date> <lang> <title>`.
+4. Push with `git push origin HEAD:main`.
+5. Confirm with `git fetch origin main && git status -sb`.
 
 Never force-push or rewrite history. If the push fails, still send the email and say so at the top.
 

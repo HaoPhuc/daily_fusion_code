@@ -1,6 +1,12 @@
 # daily_fusion_code
 Daily coding practice for fusion and plasma physics: numerical methods and algorithms in Python, MATLAB/Simulink and Fortran, with theory notes and feedback.
 
+<!-- progress:start -->
+![Progress](progress.svg)
+
+Per-topic status (✅ 🔁 🟡 ⬜) is in each file in [`curriculum/`](curriculum/).
+<!-- progress:end -->
+
 ## How it works
 - A new exercise appears in `exercises/` every day by 08:00 (Amsterdam time).
 - Each exercise folder has a PDF named after the folder, with the task and the theory in one easy-to-read file. It also has the same content as `README.md` (task) and `THEORY.md` (theory), plus a starter file.
@@ -29,7 +35,7 @@ Exercises follow four tracks in a fixed order, so each topic builds on the last.
   - Most exercises end with a short **Recall** section (about 5 min, closed book) that you answer in `recall.md` without looking at your notes.
   - Every second Sunday is a review exercise that mixes 2–3 older topics.
   - A failed recall brings the topic back a week later.
-- **Progress:** `LOG.md` lists every exercise, its topic IDs and its status.
+- **Progress:** the panel at the top and the marks in `curriculum/` update after every run. `LOG.md` lists every exercise, its topic IDs and its status.
 - **Rules:** `AGENTS.md` has the rules the daily run follows. Edit it to change the schedule, exam mode or anything else.
 
 ## Notes on checking
