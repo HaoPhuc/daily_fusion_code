@@ -43,3 +43,6 @@ Exercises follow four tracks in a fixed order, so each topic builds on the last.
 - **Fortran:** compiled with `gfortran`.
 - **MATLAB:** run in GNU Octave, so stick to core MATLAB (no toolboxes) unless the task says otherwise.
 - **Simulink:** the model is reviewed but can't be simulated. Also commit the plot or exported output the task asks for.
+
+## License
+[MIT](LICENSE). Feel free to reuse the curriculum, the exercises or the tools for your own practice.
