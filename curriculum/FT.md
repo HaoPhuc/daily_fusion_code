@@ -7,7 +7,7 @@ From a first Fortran program to the three layers of HPC: fast code on one core (
 Status: ✅ mastered · 🔁 not mastered yet · 🟡 posted, waiting for your solution · ⬜ not started
 
 ## 1. Fortran basics
-- ⬜ **FT-1.1** Program structure, `implicit none`, compiling and running
+- 🟡 **FT-1.1** Program structure, `implicit none`, compiling and running
 - ⬜ **FT-1.2** Types and kinds (`real64`), integer-division pitfalls
 - ⬜ **FT-1.3** Control flow: `if`, `do`, `do while`, `exit`/`cycle`
 - ⬜ **FT-1.4** Formatted output and reading input
