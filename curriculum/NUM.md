@@ -28,7 +28,7 @@ Status: ✅ mastered · 🔁 not mastered yet · 🟡 posted, waiting for your s
 - ⬜ **NUM-3.7** Finding minima: golden-section search and gradient descent
 
 ## 4. Ordinary differential equations (Pang ch. 4)
-- 🟡 **NUM-4.1** Explicit Euler, local vs global error *(done early: tritium decay)*
+- 🔁 **NUM-4.1** Explicit Euler, local vs global error *(done early: tritium decay)*
 - ⬜ **NUM-4.2** Systems of ODEs; rewriting higher-order ODEs as first-order systems
 - ⬜ **NUM-4.3** Predictor–corrector / Heun (RK2)
 - ⬜ **NUM-4.4** Fourth-order Runge–Kutta
