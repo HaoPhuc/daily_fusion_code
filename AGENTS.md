@@ -117,7 +117,7 @@ For each submitted folder:
 Never modify his solution files.
 
 ## 9. Writing the exercise
-Folder: `exercises/YYYY-MM-DD_ddd_lang_slug/` (lang = `python`, `matlab`, `fortran` or `simulink`). If a folder dated today already exists, don't post another one. The folder holds four files.
+Folder: `exercises/YYYY-MM-DD_lang_slug/`, e.g. `2026-10-17_fortran_dt-fusion-energy` (lang = `python`, `matlab`, `fortran` or `simulink`; no weekday). If a folder dated today already exists, don't post another one. The folder holds four files.
 
 **`README.md`**, the task. It contains:
 - the title (`# ...`);

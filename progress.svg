@@ -9,7 +9,7 @@ text{font-family:system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;f
 </style>
 <rect width="880" height="436" rx="12" fill="var(--bg)" stroke="var(--line)"/>
 <text x="24" y="36" class="h">Progress</text>
-<text x="856" y="36" class="m" text-anchor="end">Week 1 · updated Sat 17 Oct 2026</text>
+<text x="856" y="36" class="m" text-anchor="end">Week 1 · updated Sun 18 Oct 2026</text>
 <rect x="24.0" y="54" width="199.0" height="76" rx="8" fill="var(--tile)"/>
 <text x="38.0" y="76" class="tl">Topics mastered</text>
 <text x="38.0" y="113" class="tv">0<tspan class="tu" dx="6">of 138</tspan></text>

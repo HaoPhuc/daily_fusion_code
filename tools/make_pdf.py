@@ -176,7 +176,7 @@ img { max-width: 100%; }
 
 def build_html(folder):
     rel = folder.resolve().relative_to(REPO).as_posix()
-    m = re.match(r"\d{4}-\d{2}-\d{2}_[a-z]{3}_([a-z+]+)_", folder.name)
+    m = re.match(r"\d{4}-\d{2}-\d{2}_(?:(?:mon|tue|wed|thu|fri|sat|sun)_)?([a-z+]+)_", folder.name)
     lang_key = m.group(1) if m else ""
     acc = LANG_COLORS.get(lang_key, DEFAULT_COLOR)
 
