@@ -95,8 +95,36 @@ In exam mode:
 
 The times don't include reading the theory.
 
+### Difficulty levels (adapt to Phuc)
+Each track has its own level, from 1 (easiest) to 5. Phuc expects to struggle at first, so every track **starts at level 1**. The level only rises when he shows he's ready.
+
+| Level | What the exercise looks like |
+|-------|------------------------------|
+| 1 Guided | The starter file has the whole structure, with small `TODO` gaps to fill. Each task has a hint right under it. The theory includes a worked example very close to the task (different numbers, same steps). |
+| 2 Supported | Function signatures are given and the starter has comments outlining the steps. Hints sit in a `## Hints` section at the end of the README. |
+| 3 Standard | Signatures and expected outputs are given, but no step outline. At most one hint. |
+| 4 Independent | A problem statement and expected results. He chooses the structure and functions himself. |
+| 5 Stretch | Level 4 plus an open part: compare methods, measure performance, or extend the model. |
+
+**Working out today's level** for the track, from its rows in LOG.md (the Level and Status columns):
+- Start from the level of the most recent checked exercise in the track. If there is none yet, use 1.
+- Two **Correct** in a row at the current level: go up one (max 5).
+- **Not yet**: go down one (min 1).
+- **Partly correct**: stay.
+- Unsolved exercises give no signal; ignore them.
+- Retries use the same level as the exercise they retry, or one lower if that one was **Not yet**.
+- **Backlog:** if 4 or more exercises are open across all tracks, post today's exercise one level lower than calculated (min 1), at the short end of the time range. Phuc is busy, so make it easy to get back in.
+
+Within a level, still use the feedback: if he keeps tripping over the same thing (e.g. array indexing, units, syntax), put a targeted hint or theory note on exactly that in the next exercise.
+
 ## 8. Checking solutions
 Look at every folder in `exercises/` that has no `FEEDBACK.md`. A folder counts as submitted if `git log --format='%ce' -- <folder>` shows a committer email other than `noreply@anthropic.com`. Skip untouched folders.
+
+**Stuck requests.** If his solution file starts with a comment containing `STUCK` (e.g. `# STUCK: my loop gives NaN`), he is asking for help, not a verdict.
+- Reply in `HINT.md`, not `FEEDBACK.md`: one or two targeted hints for exactly where he is stuck, plus a pointer to the right part of the theory. Don't give the full solution.
+- Set the status to `stuck: hint given`. Recompute nothing for levels.
+- Don't count a hint as an attempt. Once he removes `STUCK` and pushes again, check it normally.
+- If a folder already has a `HINT.md`, check it only if the file changed after the hint.
 
 For each submitted folder:
 - Run the code:
@@ -129,7 +157,7 @@ The theory source goes in `theory/<folder>.md`, outside the exercise folder.
 
 **`README.md`**, the task. It contains:
 - the title (`# ...`);
-- a meta line in exactly this format, which the PDF builder reads: `**<Ddd> <D> <Mon> <YYYY> · <Lang> · <TOPIC-ID(s)> · Week <n> · ~<min> min**`;
+- a meta line in exactly this format, which the PDF builder reads: `**<Ddd> <D> <Mon> <YYYY> · <Lang> · <TOPIC-ID(s)> · Level <n> · Week <n> · ~<min> min**`;
 - 2–4 lines of context;
 - a pointer to the theory: "New to X? Read [the theory PDF](<folder>_theory.pdf) first.";
 - numbered tasks with exact function signatures and inputs;
@@ -164,9 +192,10 @@ Before committing:
 Add a row to LOG.md.
 
 ## 10. LOG.md
-One row per exercise: `| Date | Day | Track | Lang | Topics | Exercise | Status | Recall |`
+One row per exercise: `| Date | Day | Track | Lang | Topics | Exercise | Status | Recall | Level |`
 - Topics: topic IDs, plus "(retry)" for retries. For REVIEW rows, Track is `REVIEW` and Topics lists the reviewed IDs.
-- Status: `open`, or `checked: <verdict>`.
+- Status: `open`, `stuck: hint given`, or `checked: <verdict>`.
+- Level: the difficulty level the exercise was posted at (1–5), or `—` for exercises from before levels existed.
 - Recall:
   - `<TOPIC-ID> #<n>` when posted, where n is which recall this is for that topic (1, 2, ...);
   - add ✓ or ✗ once checked;

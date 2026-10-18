@@ -238,7 +238,7 @@ def main():
     rows = parse_log()
     state, mastered_on, last_checked, n_checked = topic_states(rows)
     rate, n_recalls, due = recall_stats(rows, state, mastered_on, last_checked, n_checked, today)
-    stats = {"streak": streak(today), "open": sum(r["status"] == "open" for r in rows),
+    stats = {"streak": streak(today), "open": sum(r["status"] == "open" or r["status"].startswith("stuck") for r in rows),
              "rate": rate, "due": due}
     write_curriculum_marks(tracks, state)
     (REPO / "progress.svg").write_text(build_svg(tracks, state, today, stats), encoding="utf-8")
