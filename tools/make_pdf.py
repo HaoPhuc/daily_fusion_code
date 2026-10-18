@@ -2,7 +2,8 @@
 """Render an exercise folder (README.md + THEORY.md) into one PDF.
 
 Usage:  python3 tools/make_pdf.py exercises/<folder> [exercises/<folder> ...]
-Output: exercises/<folder>/<folder>.pdf
+Output: exercises/<folder>/<folder>.pdf          task + theory
+        exercises/<folder>/<folder>_theory.pdf   theory only (if THEORY.md exists)
 
 Needs pandoc, npm (KaTeX is installed into a cache dir on first run) and
 Python Playwright with Chromium.
@@ -171,10 +172,12 @@ p:has(> .katex-display:only-child), p:has(> span.display:only-child) { margin: 0
 blockquote { margin: 6pt 0; padding: 2pt 10pt; border-left: 2.5pt solid var(--acc-soft); color: #424a59; }
 hr { border: none; border-top: 0.6pt solid #e3e6eb; margin: 12pt 0; }
 img { max-width: 100%; }
+.only-theory .theory { break-before: auto; }
+.only-theory .theory .top { border-top-width: 5pt; }
 """
 
 
-def build_html(folder):
+def build_html(folder, theory_only=False):
     rel = folder.resolve().relative_to(REPO).as_posix()
     m = re.match(r"\d{4}-\d{2}-\d{2}_(?:(?:mon|tue|wed|thu|fri|sat|sun)_)?([a-z+]+)_", folder.name)
     lang_key = m.group(1) if m else ""
@@ -189,7 +192,7 @@ def build_html(folder):
     chips += [f'<span class="chip">{html.escape(p)}</span>' for p in meta_parts if p not in (lang_label, week)]
     kicker = "Daily fusion code" + (f" · {week}" if week else "")
 
-    sections = [
+    sections = [] if theory_only else [
         f'<article id="exercise"><header class="top"><div class="kicker">{html.escape(kicker)}</div>'
         f'<h1>{md_inline(title)}</h1><div class="chips">{"".join(chips)}</div></header>'
         f'{wrap_sections(rewrite_links(md_to_html(body), rel))}</article>'
@@ -200,10 +203,16 @@ def build_html(folder):
         t_title, _, t_body = split_head(theory_path.read_text(encoding="utf-8"))
         t_title = re.sub(r"^(Theory|Refresher)\s*:\s*", "", t_title, flags=re.I)
         t_title = t_title[:1].upper() + t_title[1:]
+        t_html = rewrite_links(md_to_html(t_body), rel)
+        if theory_only:
+            t_html = t_html.replace('href="#exercise"', f'href="{GH}/tree/main/{rel}"')
+            bits = ["Theory", lang_label] + [p for p in meta_parts if re.match(r"^[A-Z]+-\d", p)] + ([week] if week else [])
+            head = f'<div class="kicker">{html.escape(" · ".join(bits))}</div><h1>{md_inline(t_title)}</h1>'
+        else:
+            head = f'<div class="kicker">Theory</div><h1>{md_inline(t_title)}</h1>'
         sections.append(
-            f'<article id="theory" class="theory"><header class="top"><div class="kicker">Theory</div>'
-            f'<h1>{md_inline(t_title)}</h1></header>'
-            f'{wrap_sections(rewrite_links(md_to_html(t_body), rel))}</article>'
+            f'<article id="theory" class="theory"><header class="top">{head}</header>'
+            f'{wrap_sections(t_html)}</article>'
         )
 
     kx = katex_dist()
@@ -211,7 +220,7 @@ def build_html(folder):
 <title>{html.escape(title)}</title>
 <link rel="stylesheet" href="{(kx / 'katex.min.css').as_uri()}">
 <style>:root {{ --acc: {acc}; --acc-dark: {shade(acc)}; --acc-soft: {tint(acc, 0.45)}; --acc-bg: {tint(acc, 0.08)}; }}
-{CSS}</style></head><body>
+{CSS}</style></head><body class="{'only-theory' if theory_only else ''}">
 {''.join(sections)}
 <script src="{(kx / 'katex.min.js').as_uri()}"></script>
 <script>
@@ -239,25 +248,28 @@ def render(folders):
         page = browser.new_page()
         for folder in folders:
             folder = pathlib.Path(folder)
-            html_path = CACHE / f"{folder.name}.html"
             CACHE.mkdir(parents=True, exist_ok=True)
-            html_path.write_text(build_html(folder), encoding="utf-8")
-            page.goto(html_path.as_uri())
-            page.wait_for_function("window.__rendered === true")
-            page.evaluate("document.fonts.ready")
-            errors = page.evaluate("document.querySelectorAll('.katex-error').length")
-            out = folder / f"{folder.name}.pdf"
             footer = (
                 '<div style="width:100%;font-family:Inter,sans-serif;font-size:7.5pt;color:#8a909b;'
                 'padding:0 18mm;display:flex;justify-content:space-between;">'
                 f'<span>HaoPhuc/daily_fusion_code · {html.escape(folder.name)}</span>'
                 '<span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>'
             )
-            page.pdf(path=str(out), prefer_css_page_size=True, print_background=True,
-                     display_header_footer=True, header_template="<span></span>",
-                     footer_template=footer)
-            note = f" ({errors} math errors)" if errors else ""
-            print(f"wrote {out}{note}")
+            jobs = [(False, folder / f"{folder.name}.pdf")]
+            if (folder / "THEORY.md").exists():
+                jobs.append((True, folder / f"{folder.name}_theory.pdf"))
+            for theory_only, out in jobs:
+                html_path = CACHE / f"{out.stem}.html"
+                html_path.write_text(build_html(folder, theory_only), encoding="utf-8")
+                page.goto(html_path.as_uri())
+                page.wait_for_function("window.__rendered === true")
+                page.evaluate("document.fonts.ready")
+                errors = page.evaluate("document.querySelectorAll('.katex-error').length")
+                page.pdf(path=str(out), prefer_css_page_size=True, print_background=True,
+                         display_header_footer=True, header_template="<span></span>",
+                         footer_template=footer)
+                note = f" ({errors} math errors)" if errors else ""
+                print(f"wrote {out}{note}")
         browser.close()
 
 

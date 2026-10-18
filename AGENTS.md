@@ -142,11 +142,12 @@ For NUM topics, name the matching Tao Pang chapter. Teach the concept without gi
 
 **Starter file** with stubs: `solution.py`, `solution.m` or `solution.f90`. For Simulink, a `params.m` instead. If there is a Recall section, also add a `recall.md` with the questions and empty space to answer.
 
-**The PDF**, which is what Phuc actually reads:
-1. Run `python3 tools/make_pdf.py exercises/<folder>`.
+**The PDFs**, which are what Phuc actually reads:
+1. Run `python3 tools/make_pdf.py exercises/<folder>`. It writes two files: `<folder>.pdf` (task + theory) and `<folder>_theory.pdf` (theory only, for keeping as study notes).
 2. If the script reports math errors, fix the LaTeX and rebuild.
-3. Look at every page: run `pdftoppm -r 70 -png`, then open the images. Check there is no raw `$`, nothing is cut off, and the last page isn't nearly empty (if it is, tighten the wording).
-4. Don't edit `tools/make_pdf.py` unless it is actually broken.
+3. Look at every page of both PDFs: run `pdftoppm -r 70 -png`, then open the images. Check there is no raw `$`, nothing is cut off, and the last page isn't nearly empty (if it is, tighten the wording).
+4. Commit both PDFs.
+5. Don't edit `tools/make_pdf.py` unless it is actually broken.
 
 Before committing:
 - verify every "Check yourself" number and every number in THEORY.md with your own reference solution (don't commit the reference solution);
@@ -185,7 +186,7 @@ Send one short email, in simple HTML plus a plain-text body, to the address in t
   - today's exercise: title, language, topic ID, estimated time, the new concepts in a few words, and a link to the folder on GitHub;
   - if there is a recall, which old topic it covers;
   - finally, "Task + theory attached as PDF."
-- **Attachment:** the PDF (base64 via `base64 -w0`).
+- **Attachment:** `<folder>.pdf`, the task + theory one (base64 via `base64 -w0`).
 - If sending fails, create a draft. If the attachment keeps failing, send without it and say the PDF is in the repo.
 
 ## 13. When something goes wrong
