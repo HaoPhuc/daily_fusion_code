@@ -59,7 +59,8 @@ def parse_log():
         cells += [""] * (8 - len(cells))
         date = dt.date.fromisoformat(cells[0])
         status = cells[6].lower()
-        verdict = status.split(":", 1)[1].strip() if status.startswith("checked") else None
+        vm = re.match(r"checked:\s*(correct|partly correct|not yet)", status)
+        verdict = vm.group(1) if vm else None
         recalls = [(m.group(1), int(m.group(2)), m.group(3)) for m in RECALL_RE.finditer(cells[7])]
         rows.append({"date": date, "track": cells[2].upper(), "topics": ID_RE.findall(cells[4]),
                      "status": status, "verdict": verdict, "recalls": recalls})

@@ -83,10 +83,20 @@ Old topics come back at growing intervals, so Phuc has to pull them from memory 
 **Checking.** Check `recall.md` with the rest of the exercise. In FEEDBACK.md, add a short "Recall" part with the right answer and a link to the original theory PDF, then mark the topic ✓ or ✗ in LOG.md.
 
 ## 7. Exercise size
-| Mode | Weekdays | Sat / Sun | Theory |
-|------|----------|-----------|--------|
-| Normal | 20–40 min | 60–90 min | 1–2 PDF pages |
-| Exam mode (today ≤ `EXAM_MODE_UNTIL`) | 10–15 min | 20–30 min | at most 1 page |
+The times below are **Phuc's real time, including looking things up**, not the time an expert needs. He is new to the syntax of all four languages. His first exercise was billed at 25–35 min and took him 1.5–2 h: the logic was fine, but he had to search for syntax constantly. So:
+
+| Mode | Weekdays | Sat / Sun | Numbered tasks | Theory |
+|------|----------|-----------|----------------|--------|
+| Normal | ~30 min | 45–60 min | at most 3 (weekend 4) | 1–2 PDF pages |
+| Exam mode (today ≤ `EXAM_MODE_UNTIL`) | 10–15 min | 20–30 min | at most 2 (weekend 3) | at most 1 page |
+
+- **Calibrate:** your own solving time should be at most about a quarter of the stated time. When in doubt, cut a task; leftover ideas can go into an optional "If you have time" line at the end.
+- **Syntax box:** at levels 1–3, add a `## Syntax you'll need` section before the tasks. List the exact language constructs and library calls the task needs as short generic snippets (e.g. `np.zeros(n + 1)`, `for i in range(n):`, `print(f"{x:.3e}")`, a Fortran `do` loop, `allocate(...)`). This is so his time goes into the logic, not into searching. It must not solve the task.
+- **Ask for the time:** the Submit section asks him to write how long it took as a comment on the first line of the solution file (`# time: 40 min`; `! time:` in Fortran, `% time:` in MATLAB). This is optional.
+- **Use the reported time** when checking:
+  - put it in FEEDBACK.md and in the LOG.md status, e.g. `checked: Correct (40 min)`;
+  - if it is more than 1.5× the stated time, make the next exercises smaller (fewer tasks, more syntax help) until he is back on target;
+  - if it is under half, make them a bit bigger.
 
 In exam mode:
 - each exercise has one small, focused concept;
@@ -163,7 +173,7 @@ The theory source goes in `theory/<folder>.md`, outside the exercise folder.
 - numbered tasks with exact function signatures and inputs;
 - a **Check yourself** section with 1–2 numbers he should get;
 - a **Recall** section when a topic is due (section 6). Head it `## Recall` and say: closed book, ~5 min, answer in `recall.md`;
-- a **Submit** section saying which files to commit (including `recall.md` if there is a Recall section).
+- a **Submit** section saying which files to commit (including `recall.md` if there is a Recall section), and asking for the time comment (section 7).
 
 Write all math as LaTeX (`$...$`, `$$...$$`), never as plain-text formulas.
 
@@ -194,7 +204,7 @@ Add a row to LOG.md.
 ## 10. LOG.md
 One row per exercise: `| Date | Day | Track | Lang | Topics | Exercise | Status | Recall | Level |`
 - Topics: topic IDs, plus "(retry)" for retries. For REVIEW rows, Track is `REVIEW` and Topics lists the reviewed IDs.
-- Status: `open`, `stuck: hint given`, or `checked: <verdict>`.
+- Status: `open`, `stuck: hint given`, or `checked: <verdict>`, plus `(<n> min)` if he reported his time.
 - Level: the difficulty level the exercise was posted at (1–5), or `—` for exercises from before levels existed.
 - Recall:
   - `<TOPIC-ID> #<n>` when posted, where n is which recall this is for that topic (1, 2, ...);

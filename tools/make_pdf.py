@@ -177,6 +177,9 @@ p:has(> .katex-display:only-child), p:has(> span.display:only-child) { margin: 0
 .s-submit { background: #f4f5f7; }
 .s-recall { border: 1pt dashed var(--acc-soft); border-radius: 6pt; padding: 1pt 11pt 3pt; margin: 12pt 0 8pt; break-inside: avoid; }
 .s-recall h2 { margin-top: 8pt; }
+.s-syntax-youll-need { background: #f6f7f9; border-radius: 6pt; padding: 1pt 11pt 3pt; margin: 10pt 0 8pt; }
+.s-syntax-youll-need h2 { margin-top: 8pt; }
+.s-syntax-youll-need h2::before { display: none; }
 .s-check-yourself h2, .s-submit h2 { margin-top: 8pt; }
 .s-check-yourself h2::before, .s-submit h2::before { display: none; }
 

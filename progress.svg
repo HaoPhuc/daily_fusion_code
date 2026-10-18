@@ -15,7 +15,7 @@ text{font-family:system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;f
 <text x="38.0" y="113" class="tv">0<tspan class="tu" dx="6">of 138</tspan></text>
 <rect x="235.0" y="54" width="199.0" height="76" rx="8" fill="var(--tile)"/>
 <text x="249.0" y="76" class="tl">Streak</text>
-<text x="249.0" y="113" class="tv">0<tspan class="tu" dx="6">days</tspan></text>
+<text x="249.0" y="113" class="tv">1<tspan class="tu" dx="6">day</tspan></text>
 <rect x="446.0" y="54" width="199.0" height="76" rx="8" fill="var(--tile)"/>
 <text x="460.0" y="76" class="tl">Waiting for you</text>
 <text x="460.0" y="113" class="tv">3<tspan class="tu" dx="6">exercises</tspan></text>
