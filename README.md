@@ -33,6 +33,8 @@ Exercises follow four tracks in a fixed order, so each topic builds on the last.
 
 - **Normal size:** weekdays take 20–40 min, weekends 60–90 min.
 - **Exam mode** (on until 8 Nov 2026): weekdays take 10–15 min and weekends 20–30 min, and Friday is a MATLAB script instead of Simulink.
+- **Difficulty adapts to you:** every track starts at level 1, where the starter code has most of the structure and every step has a hint. Two **Correct** in a row moves a track up a level, a **Not yet** moves it down, and a backlog of open exercises makes the next one easier.
+- **Stuck?** Put `STUCK` and a short note in a comment at the top of your solution file (e.g. `# STUCK: my loop gives NaN`), then push. The next run replies with a hint in `HINT.md` instead of grading you.
 - **Mastery:** a topic counts as mastered once your solution gets **Correct**. **Partly correct** or **Not yet** brings the topic back as a short retry.
 - **Active recall:** older topics come back about 1 week, 1 month, 3 months and then 6 months after you master them.
   - Most exercises end with a short **Recall** section (about 5 min, closed book) that you answer in `recall.md` without looking at your notes.
