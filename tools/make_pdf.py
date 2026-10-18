@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Render an exercise folder (README.md + THEORY.md) into one PDF.
+"""Render an exercise (task README.md + theory note) into PDFs.
+
+The theory note lives in theory/<folder>.md (older exercises: <folder>/THEORY.md).
 
 Usage:  python3 tools/make_pdf.py exercises/<folder> [exercises/<folder> ...]
 Output: exercises/<folder>/<folder>.pdf          task + theory
-        exercises/<folder>/<folder>_theory.pdf   theory only (if THEORY.md exists)
+        exercises/<folder>/<folder>_theory.pdf   theory only (if a theory note exists)
 
 Needs pandoc, npm (KaTeX is installed into a cache dir on first run) and
 Python Playwright with Chromium.
@@ -70,21 +72,30 @@ def split_head(md):
     return title, meta, "\n".join(body)
 
 
-def rewrite_links(fragment, rel_folder):
+def rewrite_links(fragment, rel_folder, folder_name=""):
     def fix(m):
         href = m.group(1)
         if re.match(r"^(https?:|mailto:|#)", href):
             return m.group(0)
-        name = href.split("#")[0].lstrip("./")
-        if name == "THEORY.md":
+        name = href.split("#")[0]
+        if name.lstrip("./") in ("THEORY.md", f"{folder_name}_theory.pdf"):
             return 'href="#theory" data-theory="1"'
-        if name == "README.md":
+        if name.lstrip("./") == "README.md":
             return 'href="#exercise"'
         path = posixpath.normpath(posixpath.join(rel_folder, href))
         kind = "blob" if posixpath.splitext(path)[1] else "tree"
         return f'href="{GH}/{kind}/main/{path}"'
     fragment = re.sub(r'href="([^"]*)"', fix, fragment)
-    return re.sub(r'(<a [^>]*data-theory="1"[^>]*>)\s*THEORY\.md\s*</a>', r'\1the Theory pages</a>', fragment)
+    return re.sub(r'(<a [^>]*data-theory="1"[^>]*>).*?</a>', r'\1the Theory pages</a>', fragment)
+
+
+def theory_file(folder):
+    """Theory note for an exercise folder, and the repo-relative dir its links are relative to."""
+    new = REPO / "theory" / f"{folder.name}.md"
+    if new.exists():
+        return new, "theory"
+    old = folder / "THEORY.md"
+    return (old, folder.resolve().relative_to(REPO).as_posix()) if old.exists() else (None, None)
 
 
 def wrap_sections(fragment):
@@ -195,15 +206,15 @@ def build_html(folder, theory_only=False):
     sections = [] if theory_only else [
         f'<article id="exercise"><header class="top"><div class="kicker">{html.escape(kicker)}</div>'
         f'<h1>{md_inline(title)}</h1><div class="chips">{"".join(chips)}</div></header>'
-        f'{wrap_sections(rewrite_links(md_to_html(body), rel))}</article>'
+        f'{wrap_sections(rewrite_links(md_to_html(body), rel, folder.name))}</article>'
     ]
 
-    theory_path = folder / "THEORY.md"
-    if theory_path.exists():
+    theory_path, theory_rel = theory_file(folder)
+    if theory_path:
         t_title, _, t_body = split_head(theory_path.read_text(encoding="utf-8"))
         t_title = re.sub(r"^(Theory|Refresher)\s*:\s*", "", t_title, flags=re.I)
         t_title = t_title[:1].upper() + t_title[1:]
-        t_html = rewrite_links(md_to_html(t_body), rel)
+        t_html = rewrite_links(md_to_html(t_body), theory_rel, folder.name)
         if theory_only:
             t_html = t_html.replace('href="#exercise"', f'href="{GH}/tree/main/{rel}"')
             bits = ["Theory", lang_label] + [p for p in meta_parts if re.match(r"^[A-Z]+-\d", p)] + ([week] if week else [])
@@ -256,7 +267,7 @@ def render(folders):
                 '<span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>'
             )
             jobs = [(False, folder / f"{folder.name}.pdf")]
-            if (folder / "THEORY.md").exists():
+            if theory_file(folder)[0]:
                 jobs.append((True, folder / f"{folder.name}_theory.pdf"))
             for theory_only, out in jobs:
                 html_path = CACHE / f"{out.stem}.html"

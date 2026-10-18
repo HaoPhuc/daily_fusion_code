@@ -7,10 +7,10 @@ $$L\,\frac{dI}{dt} = V_0 - R\,I, \qquad I(0) = 0$$
 
 You'll build this as a block diagram, then run it with Simulink's Euler solver to see yesterday's stability limit in a new setting.
 
-New to Simulink or time constants? Read [THEORY.md](THEORY.md) first.
+New to Simulink or time constants? Read [the theory PDF](2026-10-16_simulink_coil-current_theory.pdf) first.
 
 ## Tasks
-Parameters are in `params.m`: `L = 0.02` H, `R = 0.1` Ω, `V0 = 50` V, `t_stop = 1.5` s. Run it before simulating (or call it from the model's InitFcn callback, see THEORY).
+Parameters are in `params.m`: `L = 0.02` H, `R = 0.1` Ω, `V0 = 50` V, `t_stop = 1.5` s. Run it before simulating (or call it from the model's InitFcn callback, see the theory).
 
 1. **Build `model.slx`.** Use only these blocks: Step, Sum, Gain, Integrator, To Workspace (plus a Scope if you like).
    - Step: step time `0`, initial value `0`, final value `V0`.

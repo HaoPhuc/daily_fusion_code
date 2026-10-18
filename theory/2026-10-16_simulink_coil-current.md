@@ -60,9 +60,9 @@ out2 = sim('ball', 'Solver', 'ode1', 'FixedStep', '0.1');  % override solver for
 Simulink advances the integrators with a numerical ODE solver, set in *Model Settings → Solver*.
 
 - **Variable-step `ode45`** (default): a 4th/5th-order Runge–Kutta method that picks its own step to meet a tolerance. Accurate, but it may take few, large steps on smooth curves, so plots look jagged. *Max step size* caps the step.
-- **Fixed-step `ode1`**: plain explicit Euler with step $h$, exactly the method from the [tritium exercise](../2026-10-15_python_tritium-decay/THEORY.md). Everything there about order and stability applies here.
+- **Fixed-step `ode1`**: plain explicit Euler with step $h$, exactly the method from the [tritium exercise](../exercises/2026-10-15_python_tritium-decay/2026-10-15_python_tritium-decay_theory.pdf). Everything there about order and stability applies here.
 
-**Refresher on stability.** For $dy/dt = -\lambda y$, one Euler step multiplies $y$ by $(1 - \lambda h)$. For $\tau\,dy/dt = y_\infty - y$, the deviation $y - y_\infty$ obeys exactly such an equation. Work out what plays the role of $\lambda$, and the tritium THEORY tells you where oscillation and blow-up start.
+**Refresher on stability.** For $dy/dt = -\lambda y$, one Euler step multiplies $y$ by $(1 - \lambda h)$. For $\tau\,dy/dt = y_\infty - y$, the deviation $y - y_\infty$ obeys exactly such an equation. Work out what plays the role of $\lambda$, and the tritium theory tells you where oscillation and blow-up start.
 
 ## Tips and pitfalls
 - **Step block default step time is 1 s**, not 0. Forgetting to change it shifts your whole response by a second.

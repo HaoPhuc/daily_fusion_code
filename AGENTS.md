@@ -43,7 +43,7 @@ EXAM_MODE_UNTIL: 2026-11-08  # inclusive; short exercises until then (see sectio
 2. **Retry first.** If the most recently checked exercise in this track got **Partly correct** or **Not yet**, and that topic hasn't had a retry yet, today is a short retry on the same topic with a new problem. Mark it "(retry)" in LOG.md.
 3. **Otherwise, the next new topic.** Pick the earliest topic ID in the track's curriculum that has no exercise yet (check the Topics column of LOG.md). An exercise that is posted but not yet solved doesn't block progress.
 4. Normally one topic per exercise. A long weekend exercise outside exam mode may cover two adjacent topics.
-5. Never skip, reorder or invent topics. If a topic needs a method from another track that Phuc hasn't done yet, explain that method in THEORY.md.
+5. Never skip, reorder or invent topics. If a topic needs a method from another track that Phuc hasn't done yet, explain that method in the theory note.
 6. If a track's curriculum is finished, post a review exercise for that track and say in the email that the track is complete, so Phuc can decide what comes next.
 
 A topic counts as **mastered** once an exercise on it gets the verdict **Correct**.
@@ -76,11 +76,11 @@ Old topics come back at growing intervals, so Phuc has to pull them from memory 
 **Review Sunday.**
 - On Sundays of even-numbered weeks, post a **REVIEW** exercise instead of a new NUM topic, as long as at least 2 topics are due or were mastered 3 or more weeks ago.
 - The exercise is one fresh problem combining 2–3 older topics, preferring overdue and weak ones. It is in Python unless another language fits the topics better, and sized like a normal Sunday exercise (or an exam-mode one).
-- Its THEORY.md is a short refresher of each topic, linking the original theory notes.
+- Its theory note is a short refresher of each topic, linking the original theory PDFs.
 - Each topic in it counts as a recall: ✓ if that part is correct, ✗ otherwise.
 - If not enough topics qualify, Sunday stays a normal NUM day.
 
-**Checking.** Check `recall.md` with the rest of the exercise. In FEEDBACK.md, add a short "Recall" part with the right answer and a link to the original THEORY.md, then mark the topic ✓ or ✗ in LOG.md.
+**Checking.** Check `recall.md` with the rest of the exercise. In FEEDBACK.md, add a short "Recall" part with the right answer and a link to the original theory PDF, then mark the topic ✓ or ✗ in LOG.md.
 
 ## 7. Exercise size
 | Mode | Weekdays | Sat / Sun | Theory |
@@ -117,13 +117,21 @@ For each submitted folder:
 Never modify his solution files.
 
 ## 9. Writing the exercise
-Folder: `exercises/YYYY-MM-DD_lang_slug/`, e.g. `2026-10-17_fortran_dt-fusion-energy` (lang = `python`, `matlab`, `fortran` or `simulink`; no weekday). If a folder dated today already exists, don't post another one. The folder holds four files.
+Folder: `exercises/YYYY-MM-DD_lang_slug/`, e.g. `2026-10-17_fortran_dt-fusion-energy` (lang = `python`, `matlab`, `fortran` or `simulink`; no weekday). If a folder dated today already exists, don't post another one.
+
+Phuc reads PDFs, not Markdown, so the exercise folder holds only:
+- the task `README.md` (GitHub shows it on the folder page);
+- the starter file;
+- the two PDFs;
+- `recall.md` when there is a Recall section.
+
+The theory source goes in `theory/<folder>.md`, outside the exercise folder.
 
 **`README.md`**, the task. It contains:
 - the title (`# ...`);
 - a meta line in exactly this format, which the PDF builder reads: `**<Ddd> <D> <Mon> <YYYY> · <Lang> · <TOPIC-ID(s)> · Week <n> · ~<min> min**`;
 - 2–4 lines of context;
-- a pointer to the theory: "New to X? Read [THEORY.md](THEORY.md) first.";
+- a pointer to the theory: "New to X? Read [the theory PDF](<folder>_theory.pdf) first.";
 - numbered tasks with exact function signatures and inputs;
 - a **Check yourself** section with 1–2 numbers he should get;
 - a **Recall** section when a topic is due (section 6). Head it `## Recall` and say: closed book, ~5 min, answer in `recall.md`;
@@ -131,14 +139,14 @@ Folder: `exercises/YYYY-MM-DD_lang_slug/`, e.g. `2026-10-17_fortran_dt-fusion-en
 
 Write all math as LaTeX (`$...$`, `$$...$$`), never as plain-text formulas.
 
-**`THEORY.md`**, starting with `# Theory: <topic>`. It covers what's new to him:
+**The theory note**, `theory/<folder>.md`, starting with `# Theory: <topic>`. It is the source for the PDFs and covers what's new to him:
 - the idea and intuition;
 - key formulas with a derivation sketch;
 - error, stability or complexity where relevant;
 - for new language features, a minimal syntax example that is *not* the solution;
 - 2–4 tips or pitfalls.
 
-For NUM topics, name the matching Tao Pang chapter. Teach the concept without giving away the answers. If a topic was covered before, write a short refresher that links the earlier THEORY.md.
+For NUM topics, name the matching Tao Pang chapter. Teach the concept without giving away the answers. If a topic was covered before, write a short refresher that links the earlier theory PDF (from `theory/`: `../exercises/<old-folder>/<old-folder>_theory.pdf`).
 
 **Starter file** with stubs: `solution.py`, `solution.m` or `solution.f90`. For Simulink, a `params.m` instead. If there is a Recall section, also add a `recall.md` with the questions and empty space to answer.
 
@@ -150,7 +158,7 @@ For NUM topics, name the matching Tao Pang chapter. Teach the concept without gi
 5. Don't edit `tools/make_pdf.py` unless it is actually broken.
 
 Before committing:
-- verify every "Check yourself" number and every number in THEORY.md with your own reference solution (don't commit the reference solution);
+- verify every "Check yourself" number and every number in the theory note with your own reference solution (don't commit the reference solution);
 - make sure Python and Fortran starters parse or compile.
 
 Add a row to LOG.md.

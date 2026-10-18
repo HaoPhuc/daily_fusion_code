@@ -7,7 +7,7 @@ $$\frac{dN}{dt} = -\lambda N, \qquad \lambda = \frac{\ln 2}{t_{1/2}}$$
 
 You'll solve this ODE with the explicit Euler method and measure how the error depends on the time step.
 
-New to Euler's method? Read [THEORY.md](THEORY.md) first.
+New to Euler's method? Read [the theory PDF](2026-10-15_python_tritium-decay_theory.pdf) first.
 
 ## Tasks
 Fill in `solution.py`. Use only `numpy` and `math`, not `scipy`.

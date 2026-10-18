@@ -12,7 +12,7 @@ Per-topic status (✅ 🔁 🟡 ⬜) is in each file in [`curriculum/`](curricul
 - Each exercise folder has two PDFs plus a starter file:
   - `<folder>.pdf`: the task and the theory in one easy-to-read file;
   - `<folder>_theory.pdf`: the theory on its own, to keep as study notes.
-- The same content is also in `README.md` (task) and `THEORY.md` (theory).
+- `README.md` is the task as text, which GitHub shows on the folder page. The theory sources are kept in `theory/`; you don't need to open them.
 - Write your solution in the starter file, then commit and push.
 - The next run checks every solved exercise that has no feedback yet. It writes `FEEDBACK.md` in that folder and emails a short summary.
 - Late is fine. An exercise gets checked whenever you push it.
