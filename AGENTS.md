@@ -76,11 +76,11 @@ Old topics come back at growing intervals, so Phuc has to pull them from memory 
 **Review Sunday.**
 - On Sundays of even-numbered weeks, post a **REVIEW** exercise instead of a new NUM topic, as long as at least 2 topics are due or were mastered 3 or more weeks ago.
 - The exercise is one fresh problem combining 2–3 older topics, preferring overdue and weak ones. It is in Python unless another language fits the topics better, and sized like a normal Sunday exercise (or an exam-mode one).
-- Its theory note is a short refresher of each topic, linking the original theory PDFs.
+- Its theory note is a short refresher of each topic, linking the original exercise PDFs.
 - Each topic in it counts as a recall: ✓ if that part is correct, ✗ otherwise.
 - If not enough topics qualify, Sunday stays a normal NUM day.
 
-**Checking.** Check `recall.md` with the rest of the exercise. In FEEDBACK.md, add a short "Recall" part with the right answer and a link to the original theory PDF, then mark the topic ✓ or ✗ in LOG.md.
+**Checking.** Check `recall.md` with the rest of the exercise. In FEEDBACK.md, add a short "Recall" part with the right answer and a link to the original exercise PDF, then mark the topic ✓ or ✗ in LOG.md.
 
 ## 7. Exercise size
 The times below are **Phuc's real time, including looking things up**, not the time an expert needs. He is new to the syntax of all four languages. His first exercise was billed at 25–35 min and took him 1.5–2 h: the logic was fine, but he had to search for syntax constantly. So:
@@ -161,7 +161,7 @@ Folder: `exercises/YY-MM-DD_<TOPIC-ID>_<lang>/`, e.g. `26-10-19_NUM-1.1_python`,
 Phuc reads PDFs, not Markdown, so the exercise folder holds only:
 - the task `README.md` (GitHub shows it on the folder page);
 - the starter file;
-- the two PDFs;
+- the PDF;
 - `recall.md` when there is a Recall section.
 
 The theory source goes in `theory/<folder>.md`, outside the exercise folder.
@@ -170,7 +170,7 @@ The theory source goes in `theory/<folder>.md`, outside the exercise folder.
 - the title (`# ...`);
 - a meta line in exactly this format, which the PDF builder reads: `**<Ddd> <D> <Mon> <YYYY> · <Lang> · <TOPIC-ID(s)> · Level <n> · Week <n> · ~<min> min**`;
 - 2–4 lines of context;
-- a pointer to the theory: "New to X? Read [the theory PDF](<folder>_theory.pdf) first.";
+- a pointer to the theory: "New to X? Read [the theory](<folder>.pdf) first." (the theory is in the same PDF, after the task);
 - numbered tasks with exact function signatures and inputs;
 - a **Check yourself** section with 1–2 numbers he should get;
 - a **Recall** section when a topic is due (section 6). Head it `## Recall` and say: closed book, ~5 min, answer in `recall.md`;
@@ -185,15 +185,15 @@ Write all math as LaTeX (`$...$`, `$$...$$`), never as plain-text formulas.
 - for new language features, a minimal syntax example that is *not* the solution;
 - 2–4 tips or pitfalls.
 
-For NUM topics, name the matching Tao Pang chapter. Link other exercises only from the theory note, with a repo-root path such as `../exercises/<folder>/<folder>_theory.pdf` or `../done/<folder>/...` (use where the folder is now), so `move_done.py` can update it. Teach the concept without giving away the answers. If a topic was covered before, write a short refresher that links the earlier theory PDF (from `theory/`: `../exercises/<old-folder>/<old-folder>_theory.pdf`).
+For NUM topics, name the matching Tao Pang chapter. Link other exercises only from the theory note, with a repo-root path such as `../exercises/<folder>/<folder>.pdf` or `../done/<folder>/...` (use where the folder is now), so `move_done.py` can update it. Teach the concept without giving away the answers. If a topic was covered before, write a short refresher that links the earlier theory PDF (from `theory/`: `../exercises/<old-folder>/<old-folder>_theory.pdf`).
 
 **Starter file** with stubs: `solution.py`, `solution.m` or `solution.f90`. For Simulink, a `params.m` instead. If there is a Recall section, also add a `recall.md` with the questions and empty space to answer.
 
 **The PDFs**, which are what Phuc actually reads:
-1. Run `python3 tools/make_pdf.py exercises/<folder>`. It writes two files: `<folder>.pdf` (task + theory) and `<folder>_theory.pdf` (theory only, for keeping as study notes).
+1. Run `python3 tools/make_pdf.py exercises/<folder>`. It writes one file, `<folder>.pdf`: the task, then the theory. There is no separate theory PDF.
 2. If the script reports math errors, fix the LaTeX and rebuild.
-3. Look at every page of both PDFs: run `pdftoppm -r 70 -png`, then open the images. Check there is no raw `$`, nothing is cut off, and the last page isn't nearly empty (if it is, tighten the wording).
-4. Commit both PDFs.
+3. Look at every page of the PDF: run `pdftoppm -r 70 -png`, then open the images. Check there is no raw `$`, nothing is cut off, and the last page isn't nearly empty (if it is, tighten the wording).
+4. Commit the PDF.
 5. Don't edit `tools/make_pdf.py` unless it is actually broken.
 
 Before committing:

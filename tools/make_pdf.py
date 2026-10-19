@@ -4,8 +4,7 @@
 The theory note lives in theory/<folder>.md (older exercises: <folder>/THEORY.md).
 
 Usage:  python3 tools/make_pdf.py exercises/<folder> [exercises/<folder> ...]
-Output: exercises/<folder>/<folder>.pdf          task + theory
-        exercises/<folder>/<folder>_theory.pdf   theory only (if a theory note exists)
+Output: exercises/<folder>/<folder>.pdf   task, then the theory
 
 Needs pandoc, npm (KaTeX is installed into a cache dir on first run) and
 Python Playwright with Chromium.
@@ -78,7 +77,7 @@ def rewrite_links(fragment, rel_folder, folder_name=""):
         if re.match(r"^(https?:|mailto:|#)", href):
             return m.group(0)
         name = href.split("#")[0]
-        if name.lstrip("./") in ("THEORY.md", f"{folder_name}_theory.pdf"):
+        if name.lstrip("./") in ("THEORY.md", f"{folder_name}.pdf", f"{folder_name}_theory.pdf"):
             return 'href="#theory" data-theory="1"'
         if name.lstrip("./") == "README.md":
             return 'href="#exercise"'
@@ -86,7 +85,7 @@ def rewrite_links(fragment, rel_folder, folder_name=""):
         kind = "blob" if posixpath.splitext(path)[1] else "tree"
         return f'href="{GH}/{kind}/main/{path}"'
     fragment = re.sub(r'href="([^"]*)"', fix, fragment)
-    return re.sub(r'(<a [^>]*data-theory="1"[^>]*>).*?</a>', r'\1the Theory pages</a>', fragment)
+    return re.sub(r'(<a [^>]*data-theory="1"[^>]*>)\s*(THEORY\.md|the theory PDF)\s*</a>', r'\1the Theory pages</a>', fragment)
 
 
 def theory_file(folder):
@@ -272,7 +271,7 @@ def render(folders):
             )
             jobs = [(False, folder / f"{folder.name}.pdf")]
             if theory_file(folder)[0]:
-                jobs.append((True, folder / f"{folder.name}_theory.pdf"))
+                pass  # theory is part of the main PDF (no separate theory PDF)
             for theory_only, out in jobs:
                 html_path = CACHE / f"{out.stem}.html"
                 html_path.write_text(build_html(folder, theory_only), encoding="utf-8")

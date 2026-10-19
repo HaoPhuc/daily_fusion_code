@@ -3,7 +3,7 @@
 
 A computer stores a number like $1.0$ or $10^{20}$ with only about 16 significant digits. Today you measure that limit yourself: the **machine epsilon** $\varepsilon$, the smallest relative change a 64-bit float can still see. Then you check what it means for a plasma with $10^{20}$ ions. Every error estimate later in the NUM track rests on this number.
 
-New to floating-point numbers? Read [the theory PDF](26-10-19_NUM-1.1_python_theory.pdf) first.
+New to floating-point numbers? Read [the theory](26-10-19_NUM-1.1_python.pdf) first.
 
 ## Syntax you'll need
 ```python
