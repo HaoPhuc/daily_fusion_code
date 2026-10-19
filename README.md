@@ -14,9 +14,9 @@ Per-topic status (✅ 🔁 🟡 ⬜) is in each file in [`curriculum/`](curricul
   - `<folder>_theory.pdf`: the theory on its own, to keep as study notes.
 - `README.md` is the task as text, which GitHub shows on the folder page. The theory sources are kept in `theory/`; you don't need to open them.
 - Write your solution in the starter file, then commit and push.
-- The next run checks every solved exercise that has no feedback yet. It writes `FEEDBACK.md` in that folder and emails a short summary.
+- The next run checks every solved exercise that has no feedback yet. It writes `FEEDBACK.md` in that folder, emails a short summary, and moves the exercise to `done/`. So `exercises/` only holds what you still have to do.
 - Late is fine. An exercise gets checked whenever you push it.
-- Want a re-check after fixing something? Delete that folder's `FEEDBACK.md` and push.
+- Want a re-check after fixing something? Delete that folder's `FEEDBACK.md` (in `done/`) and push.
 
 ## Curriculum
 Exercises follow four tracks in a fixed order, so each topic builds on the last. The full topic lists are in `curriculum/`.

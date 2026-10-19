@@ -128,7 +128,7 @@ Each track has its own level, from 1 (easiest) to 5. Phuc expects to struggle at
 Within a level, still use the feedback: if he keeps tripping over the same thing (e.g. array indexing, units, syntax), put a targeted hint or theory note on exactly that in the next exercise.
 
 ## 8. Checking solutions
-Look at every folder in `exercises/` that has no `FEEDBACK.md`. A folder counts as submitted if `git log --format='%ce' -- <folder>` shows a committer email other than `noreply@anthropic.com`. Skip untouched folders.
+Look at every folder in `exercises/` that has no `FEEDBACK.md`, and at folders in `done/` whose `FEEDBACK.md` Phuc deleted (a re-check request). A folder counts as submitted if `git log --format='%ce' -- <folder>` shows a committer email other than `noreply@anthropic.com`. Skip untouched folders.
 
 **Stuck requests.** If his solution file starts with a comment containing `STUCK` (e.g. `# STUCK: my loop gives NaN`), he is asking for help, not a verdict.
 - Reply in `HINT.md`, not `FEEDBACK.md`: one or two targeted hints for exactly where he is stuck, plus a pointer to the right part of the theory. Don't give the full solution.
@@ -151,6 +151,7 @@ For each submitted folder:
   - a short reference solution inside `<details><summary>Reference solution</summary> ... </details>`;
   - if the exercise had a Recall section, a "Recall" part (section 6).
 - Set the exercise's status in LOG.md to `checked: <verdict>`, and mark the recall ✓/✗.
+- **Move it out of the way.** Once an exercise in `exercises/` is checked (any verdict), run `python3 tools/move_done.py <folder>`. This moves it to `done/`, rewrites every link to it (LOG.md, theory notes, READMEs) and rebuilds the PDFs that link to it. `exercises/` should only hold what Phuc still has to do. Re-checked folders stay in `done/`. Stuck folders (`HINT.md`, not graded) stay in `exercises/`.
 
 Never modify his solution files.
 
@@ -184,7 +185,7 @@ Write all math as LaTeX (`$...$`, `$$...$$`), never as plain-text formulas.
 - for new language features, a minimal syntax example that is *not* the solution;
 - 2–4 tips or pitfalls.
 
-For NUM topics, name the matching Tao Pang chapter. Teach the concept without giving away the answers. If a topic was covered before, write a short refresher that links the earlier theory PDF (from `theory/`: `../exercises/<old-folder>/<old-folder>_theory.pdf`).
+For NUM topics, name the matching Tao Pang chapter. Link other exercises only from the theory note, with a repo-root path such as `../exercises/<folder>/<folder>_theory.pdf` or `../done/<folder>/...` (use where the folder is now), so `move_done.py` can update it. Teach the concept without giving away the answers. If a topic was covered before, write a short refresher that links the earlier theory PDF (from `theory/`: `../exercises/<old-folder>/<old-folder>_theory.pdf`).
 
 **Starter file** with stubs: `solution.py`, `solution.m` or `solution.f90`. For Simulink, a `params.m` instead. If there is a Recall section, also add a `recall.md` with the questions and empty space to answer.
 
