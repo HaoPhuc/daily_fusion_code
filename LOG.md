@@ -7,3 +7,4 @@ One row per exercise. A topic is mastered once its exercise is `checked: Correct
 | 2026-10-16 | Fri | CTRL | Simulink | CTRL-2.1 (before curriculum) | [Coil current: a first-order system](exercises/2026-10-16_simulink_coil-current/) | open | — | — |
 | 2026-10-17 | Sat | FT | Fortran | FT-1.1 | [D-T fusion energy: your first Fortran program](exercises/2026-10-17_fortran_dt-fusion-energy/) | open | — | — |
 | 2026-10-18 | Sun | NUM | Python | NUM-4.1 (retry) | [Heating a plasma: Euler's method, second try](exercises/2026-10-18_python_plasma-heating-euler/) | open | — | 1 |
+| 2026-10-19 | Mon | NUM | Python | NUM-1.1 | [How small is small? Machine epsilon](exercises/2026-10-19_python_machine-epsilon/) | open | — | 1 |

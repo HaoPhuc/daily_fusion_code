@@ -7,7 +7,7 @@ Follows the chapter order of Tao Pang, *An Introduction to Computational Physics
 Status: ✅ mastered · 🔁 not mastered yet · 🟡 posted, waiting for your solution · ⬜ not started
 
 ## 1. Numbers and error (foundations)
-- ⬜ **NUM-1.1** Floating-point numbers: representation, machine epsilon, overflow/underflow
+- 🟡 **NUM-1.1** Floating-point numbers: representation, machine epsilon, overflow/underflow
 - ⬜ **NUM-1.2** Round-off vs truncation error; catastrophic cancellation
 - ⬜ **NUM-1.3** Order of accuracy and convergence tests on log–log plots
 
