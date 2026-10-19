@@ -193,15 +193,16 @@ img { max-width: 100%; }
 
 def build_html(folder, theory_only=False):
     rel = folder.resolve().relative_to(REPO).as_posix()
-    m = re.match(r"\d{4}-\d{2}-\d{2}_(?:(?:mon|tue|wed|thu|fri|sat|sun)_)?([a-z+]+)_", folder.name)
-    lang_key = m.group(1) if m else ""
-    acc = LANG_COLORS.get(lang_key, DEFAULT_COLOR)
-
     readme = (folder / "README.md").read_text(encoding="utf-8")
     title, meta, body = split_head(readme)
     meta_parts = [p.strip() for p in meta.split("·")] if meta else []
     week = next((p for p in meta_parts if p.lower().startswith("week")), "")
-    lang_label = next((p for p in meta_parts if p.lower().replace("+", "") in {k.replace("+", "") for k in LANG_COLORS}), lang_key.capitalize())
+    # language: from the meta line, else from an old-style folder name (date_lang_slug)
+    lang_label = next((p for p in meta_parts if p.lower() in LANG_COLORS), "")
+    if not lang_label:
+        m = re.match(r"\d{4}-\d{2}-\d{2}_(?:(?:mon|tue|wed|thu|fri|sat|sun)_)?([a-z+]+)_", folder.name)
+        lang_label = m.group(1).capitalize() if m else ""
+    acc = LANG_COLORS.get(lang_label.lower(), DEFAULT_COLOR)
     chips = [f'<span class="chip lang">{html.escape(lang_label)}</span>']
     chips += [f'<span class="chip">{html.escape(p)}</span>' for p in meta_parts if p not in (lang_label, week)]
     kicker = "Daily fusion code" + (f" · {week}" if week else "")
