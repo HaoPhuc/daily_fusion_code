@@ -7,7 +7,7 @@ $$\frac{dW}{dt} = P - \frac{W}{\tau_E}, \qquad W(0) = 0$$
 
 Take $P = 10$ MW and $\tau_E = 2$ s, so $W$ is in MJ. The starter file has the whole program; you fill in five short `TODO` gaps and see how Euler's error shrinks with $\Delta t$.
 
-New to Euler's method? Read [the theory PDF](2026-10-18_NUM-4.1-retry_theory.pdf) first; it ends with the three bugs from last time.
+New to Euler's method? Read [the theory PDF](26-10-18_NUM-4.1-retry_python_theory.pdf) first; it ends with the three bugs from last time.
 
 ## Syntax you'll need
 ```python

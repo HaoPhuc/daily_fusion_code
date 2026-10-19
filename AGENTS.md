@@ -155,7 +155,7 @@ For each submitted folder:
 Never modify his solution files.
 
 ## 9. Writing the exercise
-Folder: `exercises/YYYY-MM-DD_<TOPIC-ID>/`, so the name shows the track and the topic, e.g. `2026-10-19_NUM-1.1`, `2026-10-17_FT-1.1`. Retries add `-retry` (`2026-10-18_NUM-4.1-retry`). Review exercises are `YYYY-MM-DD_REVIEW`. The topic name and the language go inside the files (README title and meta line), not into the folder name. If a folder dated today already exists, don't post another one.
+Folder: `exercises/YY-MM-DD_<TOPIC-ID>_<lang>/`, e.g. `26-10-19_NUM-1.1_python`, `26-10-17_FT-1.1_fortran`, `26-10-16_CTRL-2.1_simulink`. `<lang>` is `python`, `matlab`, `fortran` or `simulink`. Retries add `-retry` after the topic ID (`26-10-18_NUM-4.1-retry_python`). Review exercises use `REVIEW` instead of the topic ID (`26-10-25_REVIEW_python`). The topic name goes inside the files (README title), not into the folder name. If a folder dated today already exists, don't post another one.
 
 Phuc reads PDFs, not Markdown, so the exercise folder holds only:
 - the task `README.md` (GitHub shows it on the folder page);

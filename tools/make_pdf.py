@@ -197,10 +197,10 @@ def build_html(folder, theory_only=False):
     title, meta, body = split_head(readme)
     meta_parts = [p.strip() for p in meta.split("·")] if meta else []
     week = next((p for p in meta_parts if p.lower().startswith("week")), "")
-    # language: from the meta line, else from an old-style folder name (date_lang_slug)
+    # language: from the meta line, else from the folder name
     lang_label = next((p for p in meta_parts if p.lower() in LANG_COLORS), "")
-    if not lang_label:
-        m = re.match(r"\d{4}-\d{2}-\d{2}_(?:(?:mon|tue|wed|thu|fri|sat|sun)_)?([a-z+]+)_", folder.name)
+    if not lang_label:  # fall back to the folder name (..._<lang>)
+        m = re.search(r"_(python|matlab|simulink|fortran)$", folder.name)
         lang_label = m.group(1).capitalize() if m else ""
     acc = LANG_COLORS.get(lang_label.lower(), DEFAULT_COLOR)
     chips = [f'<span class="chip lang">{html.escape(lang_label)}</span>']

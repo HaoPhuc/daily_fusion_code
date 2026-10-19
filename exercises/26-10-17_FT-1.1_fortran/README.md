@@ -7,7 +7,7 @@ $$\mathrm{D} + \mathrm{T} \;\to\; {}^4\mathrm{He} + n + Q$$
 
 The released energy $Q$ comes from the mass that goes missing, $Q = \Delta m\, c^2$. You'll write a complete Fortran program that computes $Q$ and the energy in one kilogram of D-T fuel, and see why every Fortran program starts with `implicit none`.
 
-New to Fortran? Read [the theory PDF](2026-10-17_FT-1.1_theory.pdf) first.
+New to Fortran? Read [the theory PDF](26-10-17_FT-1.1_fortran_theory.pdf) first.
 
 ## Tasks
 The starter `solution.f90` already declares all physical constants (masses in u, unit conversions). Don't change them.
