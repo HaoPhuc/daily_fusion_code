@@ -9,16 +9,16 @@ text{font-family:system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;f
 </style>
 <rect width="880" height="436" rx="12" fill="var(--bg)" stroke="var(--line)"/>
 <text x="24" y="36" class="h">Progress</text>
-<text x="856" y="36" class="m" text-anchor="end">Week 2 · updated Mon 19 Oct 2026</text>
+<text x="856" y="36" class="m" text-anchor="end">Week 2 · updated Tue 20 Oct 2026</text>
 <rect x="24.0" y="54" width="199.0" height="76" rx="8" fill="var(--tile)"/>
 <text x="38.0" y="76" class="tl">Topics mastered</text>
 <text x="38.0" y="113" class="tv">0<tspan class="tu" dx="6">of 138</tspan></text>
 <rect x="235.0" y="54" width="199.0" height="76" rx="8" fill="var(--tile)"/>
 <text x="249.0" y="76" class="tl">Streak</text>
-<text x="249.0" y="113" class="tv">1<tspan class="tu" dx="6">day</tspan></text>
+<text x="249.0" y="113" class="tv">0<tspan class="tu" dx="6">days</tspan></text>
 <rect x="446.0" y="54" width="199.0" height="76" rx="8" fill="var(--tile)"/>
 <text x="460.0" y="76" class="tl">Waiting for you</text>
-<text x="460.0" y="113" class="tv">4<tspan class="tu" dx="6">exercises</tspan></text>
+<text x="460.0" y="113" class="tv">5<tspan class="tu" dx="6">exercises</tspan></text>
 <rect x="657.0" y="54" width="199.0" height="76" rx="8" fill="var(--tile)"/>
 <text x="671.0" y="76" class="tl">Recall pass rate</text>
 <text x="671.0" y="113" class="tv">–<tspan class="tu" dx="6">0 due now</tspan></text>
@@ -34,8 +34,8 @@ text{font-family:system-ui,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;f
 <text x="24" y="246" class="tr">Signals and control<tspan class="m" dx="8">CTRL</tspan></text>
 <text x="856" y="246" class="cnt" text-anchor="end">0 / 34 mastered</text>
 <rect x="24" y="256" width="832" height="10" rx="4" fill="var(--c1t)"/>
-<rect x="24.0" y="256" width="24.5" height="10" rx="4" fill="var(--c1b)"/>
-<text x="24" y="283" class="s">Next: CTRL-1.1 Scripts vs functions; function files and local functions</text>
+<rect x="24.0" y="256" width="48.9" height="10" rx="4" fill="var(--c1b)"/>
+<text x="24" y="283" class="s">Next: CTRL-1.2 Vectors, indexing and logical masks</text>
 <text x="24" y="310" class="tr">Fortran and HPC<tspan class="m" dx="8">FT</tspan></text>
 <text x="856" y="310" class="cnt" text-anchor="end">0 / 32 mastered</text>
 <rect x="24" y="320" width="832" height="10" rx="4" fill="var(--c2t)"/>

@@ -7,7 +7,7 @@ Builds from MATLAB basics and dynamic systems through feedback and signal proces
 Status: ✅ mastered · 🔁 not mastered yet · 🟡 posted, waiting for your solution · ⬜ not started
 
 ## 1. MATLAB foundations
-- ⬜ **CTRL-1.1** Scripts vs functions; function files and local functions
+- 🟡 **CTRL-1.1** Scripts vs functions; function files and local functions
 - ⬜ **CTRL-1.2** Vectors, indexing and logical masks
 - ⬜ **CTRL-1.3** Vectorisation vs loops (with timing)
 - ⬜ **CTRL-1.4** Plotting well and exporting figures

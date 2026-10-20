@@ -8,3 +8,4 @@ One row per exercise. A topic is mastered once its exercise is `checked: Correct
 | 2026-10-17 | Sat | FT | Fortran | FT-1.1 | [D-T fusion energy: your first Fortran program](exercises/26-10-17_FT-1.1_fortran/) | open | — | — |
 | 2026-10-18 | Sun | NUM | Python | NUM-4.1 (retry) | [Heating a plasma: Euler's method, second try](exercises/26-10-18_NUM-4.1-retry_python/) | open | — | 1 |
 | 2026-10-19 | Mon | NUM | Python | NUM-1.1 | [How small is small? Machine epsilon](exercises/26-10-19_NUM-1.1_python/) | open | — | 1 |
+| 2026-10-20 | Tue | CTRL | MATLAB | CTRL-1.1 | [Gyro-radius: your first MATLAB functions](exercises/26-10-20_CTRL-1.1_matlab/) | open | — | 1 |
